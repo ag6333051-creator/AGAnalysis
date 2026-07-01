@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG Analysis | مجموعة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ====== TICKER BAR ====== -->
+    <div class="ticker-bar">
+        <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- ====== NAVIGATION ====== -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            
+              <div class="logoo">
+                <img src="images/logoo.jpg" width="80" />
+              </div>
+            
+            <div class="logo-text"> <span>مجموعـة | AG ANALYSIS</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">عن القناة</a></li>
+            <li><a href="#analysis">أنواع التحليل</a></li>
+            <li><a href="#markets">الأسواق</a></li>
+            <li><a href="#testimonials">آراء المتابعين</a></li>
+            <li><a href="#social">تواصل معنا</a></li>
+        </ul>
+        <a href="https://t.me/AG_Analysis" target="_blank" class="nav-cta">
+            <i class="fab fa-telegram"></i> انضم الآن
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+        <a href="#home" onclick="toggleMenu()">الرئيسية</a>
+        <a href="#about" onclick="toggleMenu()">عن القناة</a>
+        <a href="#analysis" onclick="toggleMenu()">أنواع التحليل</a>
+        <a href="#markets" onclick="toggleMenu()">الأسواق</a>
+        <a href="#testimonials" onclick="toggleMenu()">آراء المتابعين</a>
+        <a href="#social" onclick="toggleMenu()">تواصل معنا</a>
+    </div>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section class="hero" id="home">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge reveal">
+                    <i class="fas fa-chart-line"></i>
+                    6 سنوات خبرة في أسواق المال
+                </div>
+                <h1 class="hero-title reveal">
+                    تحليل دقيق<br>
+                    <span class="highlight">لأسواق المال</span><br>
+                    <span class="highlight">AG Analysis</span><br>
+                </h1>
+                <p class="hero-desc reveal">
+                    قناة متخصصة في التحليل الفني والزمني والرقمي والفلكي والموجي. نقدم تحليلات مستمرة لأسواق الفوركس والعملات الرقمية والأسهم الأمريكية باحترافية عالية.
+                </p>
+                <div class="hero-stats reveal">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="6">0</span>
+                        <span class="hero-stat-label">سنوات خبرة</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="1457">0</span>
+                        <span class="hero-stat-label">متابع</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="3">0</span>
+                        <span class="hero-stat-label">أسواق رئيسية</span>
+                    </div>
+                </div>
+                <div class="hero-buttons reveal">
+                    <a href="https://t.me/AG_Analysis" target="_blank" class="btn-primary">
+                        <i class="fab fa-telegram"></i> انضم للقناة
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCGxYySYCRl-ArB1vdDhm-rg" target="_blank" class="btn-outline">
+                        <i class="fab fa-youtube"></i> يوتيوب
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="phone-3d-container reveal">
+                    <div class="phone-3d">
+                        <div class="phone-screen-3d">
+                            <div class="phone-notch"></div>
+                            <div class="app-header">
+                                <div class="app-logo">
+                                    <div class="app-logo-icon">A.</div>
+                                    <span class="app-logo-text">AG Analysis</span>
+                                </div>
+                                <i class="fas fa-bell" style="color: var(--text-gray);"></i>
+                            </div>
+                            <div class="balance-card-3d">
+                                <div class="balance-label">إجمالي الأرباح</div>
+                                <div class="balance-amount">+2,847.5%</div>
+                                <div class="balance-change">
+                                    <i class="fas fa-arrow-up"></i>
+                                    هذا الشهر
+                                </div>
+                            </div>
+                            <div class="chart-3d">
+                                <canvas id="phoneChart"></canvas>
+                            </div>
+                            <div class="signal-card">
+                                <div class="signal-header">
+                                    <span class="signal-pair">EUR/USD</span>
+                                    <span class="signal-type signal-buy">شراء</span>
+                                </div>
+                                <div class="signal-price">الهدف: 1.0950 | وقف: 1.0820</div>
+                            </div>
+                            <div class="signal-card">
+                                <div class="signal-header">
+                                    <span class="signal-pair">BTC/USDT</span>
+                                    <span class="signal-type signal-sell">بيع</span>
+                                </div>
+                                <div class="signal-price">الهدف: 42,500 | وقف: 45,200</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT CHANNEL ====== -->
+    <section class="about-section" id="about">
+        <div class="section-header reveal">
+            <div class="section-label">
+                <i class="fas fa-info-circle"></i>
+                عن القناة
+            </div>
+            <h2 class="section-title">
+                شريكك <span class="highlight">الموثوق</span><br>
+                في عالم التداول
+            </h2>
+            <p class="section-desc">
+                AG Analysis هي مجموعة تحليلية متخصصة تقدم تحليلات دقيقة ومستمرة لأسواق الفوركس والعملات الرقمية والأسهم الأمريكية. نعتمد على منهجيات علمية متعددة لضمان أعلى مستويات الدقة في توقعاتنا.
+            </p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card reveal">
+                <div class="about-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="about-card-title">تحليلات دقيقة</h3>
+                <p class="about-card-desc">
+                    نقدم تحليلات بنسبة دقة عالية تصل إلى 85% باستخدام أدوات تحليلية متعددة ومؤشرات فنية متقدمة.
+                </p>
+            </div>
+            <div class="about-card featured reveal">
+                <div class="about-icon"><i class="fas fa-users"></i></div>
+                <h3 class="about-card-title">1,457+ متابع</h3>
+                <p class="about-card-desc">
+                    مجتمع متنامي من المتداولين المحترفين والمبتدئين يثقون بتحليلاتنا ويتابعونا باستمرار.
+                </p>
+            </div>
+            <div class="about-card reveal">
+                <div class="about-icon"><i class="fas fa-clock"></i></div>
+                <h3 class="about-card-title">6 سنوات خبرة</h3>
+                <p class="about-card-desc">
+                    خبرة تمتد لـ 6 سنوات في أسواق المال المختلفة، نقدم فيها تحليلات مستمرة ونتائج مثبتة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ANALYSIS TYPES ====== -->
+    <section class="analysis-section" id="analysis">
+        <div class="section-header reveal">
+            <div class="section-label">
+                <i class="fas fa-microscope"></i>
+                أنواع التحليل
+            </div>
+            <h2 class="section-title">
+                متخصصون في <span class="highlight">6 أنواع</span><br>
+                من التحليل المتقدم
+            </h2>
+            <p class="section-desc">
+                نستخدم مجموعة متكاملة من أدوات التحليل لضمان أعلى درجات الدقة في توقعاتنا
+            </p>
+        </div>
+        <div class="analysis-grid">
+            <div class="analysis-card reveal">
+                <span class="analysis-num">01</span>
+                <div class="analysis-icon"><i class="fas fa-chart-bar"></i></div>
+                <h3 class="analysis-title">التحليل الفني</h3>
+                <p class="analysis-desc">
+                    دراسة الرسوم البيانية والأنماط السعرية باستخدام المؤشرات الفنية المتقدمة لتحديد اتجاهات السوق.
+                </p>
+            </div>
+            <div class="analysis-card reveal">
+                <span class="analysis-num">02</span>
+                <div class="analysis-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h3 class="analysis-title">التحليل الزمني</h3>
+                <p class="analysis-desc">
+                    تحديد النقاط الزمنية الحرجة للسوق باستخدام دورات الزمن السعري ونظرية دورات السوق.
+                </p>
+            </div>
+            <div class="analysis-card reveal">
+                <span class="analysis-num">03</span>
+                <div class="analysis-icon"><i class="fas fa-calculator"></i></div>
+                <h3 class="analysis-title">التحليل الرقمي</h3>
+                <p class="analysis-desc">
+                    استخدام الأرقام والنسب الرياضية لتحديد المستويات السعرية الدقيقة والأهداف المتوقعة.
+                </p>
+            </div>
+            <div class="analysis-card reveal">
+                <span class="analysis-num">04</span>
+                <div class="analysis-icon"><i class="fas fa-star"></i></div>
+                <h3 class="analysis-title">التحليل الفلكي</h3>
+                <p class="analysis-desc">
+                    دراسة التأثيرات الفلكية على حركة الأسواق باستخدام علم التوقيت الفلكي والأحداث السماوية.
+                </p>
+            </div>
+            <div class="analysis-card reveal">
+                <span class="analysis-num">05</span>
+                <div class="analysis-icon"><i class="fas fa-wave-square"></i></div>
+                <h3 class="analysis-title">التحليل الموجي</h3>
+                <p class="analysis-desc">
+                    تطبيق نظرية إليوت للموجات لتحديد دورات السوق الرئيسية والفرعية ونقاط الانعكاس.
+                </p>
+            </div>
+            <div class="analysis-card reveal">
+                <span class="analysis-num">06</span>
+                <div class="analysis-icon"><i class="fas fa-chess"></i></div>
+                <h3 class="analysis-title">استراتيجيات متقدمة</h3>
+                <p class="analysis-desc">
+                    استراتيجيات تداول متنوعة تجمع بين عدة أنواع من التحليل لتحقيق أفضل النتائج.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MARKETS ====== -->
+    <section class="markets-section" id="markets">
+        <div class="section-header reveal">
+            <div class="section-label">
+                <i class="fas fa-globe"></i>
+                الأسواق التي نغطيها
+            </div>
+            <h2 class="section-title">
+                تداول في <span class="highlight">3 أسواق</span><br>
+                رئيسية
+            </h2>
+            <p class="section-desc">
+                نقدم تحليلات شاملة لأهم الأسواق المالية العالمية
+            </p>
+        </div>
+        <div class="markets-grid">
+            <div class="market-card reveal">
+                <div class="market-icon"></div>
+                 <i class="fas fa-dollar-sign market-icon"></i>
+                    <h3>سوق العملات (Forex)</h3>
+                    <p>تحليل الأزواج الرئيسية والمتقاطعة مثل EUR/USD, GBP/USD, USD/JPY واقتناص فرص السكالبينج والصفقات السوينج اليومية.</p>
+             
+            </div>
+            <div class="market-card reveal">
+                <div class="market-icon"></div>
+               <i class="fab fa-bitcoin market-icon"></i>
+                    <h3>العملات الرقمية (Cryptocurrency)</h3>
+                    <p>متابعة مستمرة لحركة البيتكوين (BTC)، الإيثيريوم (ETH)، والعملات البديلة الواعدة مع تحديد مناطق التجميع والتصريف الاستثمارية.</p>
+            </div>
+            <div class="market-card reveal">
+                <div class="market-icon"></div>
+                <i class="fas fa-coins market-icon"></i>
+                <h3 class="market-title">الأسهم الأمريكية</h3>
+                
+                    <h3>الذهب والمعادن (Gold & Commodities)</h3>
+                    <p>تحليل دقيق للملاذ الآمن (XAU/USD) بناءً على الارتباطات الاقتصادية، والدورات الزمنية السنوية للذهب.</p>
+      </div>
+        </div>
+    </section>
+
+    <!-- ====== TESTIMONIALS MARQUEE ====== -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-header reveal">
+            <div class="section-label">
+                <i class="fas fa-comments"></i>
+                آراء المتابعين
+            </div>
+            <h2 class="section-title">
+                ماذا يقول <span class="highlight">متابعونا</span> عنا؟
+            </h2>
+        </div>
+        <div class="testimonials-wrapper">
+            <div class="testimonials-track" id="testimonialsTrack"></div>
+        </div>
+    </section>
+
+    <!-- ====== SOCIAL LINKS ====== -->
+    <section class="social-section" id="social">
+        <div class="section-header reveal">
+            <div class="section-label">
+                <i class="fas fa-share-alt"></i>
+                تواصل معنا
+            </div>
+            <h2 class="section-title">
+                تابعنا على <span class="highlight">منصات التواصل</span>
+            </h2>
+            <p class="section-desc">
+                انضم لمجتمعنا وتابع أحدث التحليلات والتوصيات
+            </p>
+        </div>
+        <div class="social-grid reveal">
+            <a href="https://facebook.com/profile.php?id=61561502635523" target="_blank" class="social-card facebook">
+                <i class="fab fa-facebook"></i>
+                <span>فيسبوك</span>
+                <small>AG Analysis</small>
+            </a>
+            <a href="https://x.com/ghanemm_ahmed" target="_blank" class="social-card twitter">
+                  <div class="social-card.twitter">
+                    <img src="images/x.jpg" width="40"/>
+                  </div>
+                    
+                
+                <span>تويتر</span>
+                <small>@ghanemm_ahmed</small>
+            </a>
+            <a href="https://t.me/AG_Analysis" target="_blank" class="social-card telegram">
+                <i class="fab fa-telegram"></i>
+                <span>تيليجرام</span>
+                <small>@AG_Analysis</small>
+            </a>
+            <a href="https://www.youtube.com/channel/UCGxYySYCRl-ArB1vdDhm-rg" target="_blank" class="social-card youtube">
+                <i class="fab fa-youtube"></i>
+                <span>يوتيوب</span>
+                <small>AG Analysis</small>
+            </a>
+            <a href="mailto:aganalysis4@gmail.com" class="social-card email">
+                <i class="fas fa-envelope"></i>
+                <span>البريد الإلكتروني</span>
+                <small>aganalysis4@gmail.com</small>
+            </a>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                
+               <div class="logoo">
+                <img src="images/logoo.jpg" width="80" />
+              </div>
+            
+                <div class="footer-brand-text"> <span>مجموعـة  | AG ANALYSIS</span></div>
+            </div>
+            <div class="footer-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#about">عن القناة</a>
+                <a href="#analysis">أنواع التحليل</a>
+                <a href="#markets">الأسواق</a>
+                <a href="#social">تواصل معنا</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 AG Analysis. جميع الحقوق محفوظة. | تحليل دقيق لأسواق المال</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
